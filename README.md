@@ -34,7 +34,7 @@ To run this project locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-github-username/your-repo-name.git](https://github.com/your-github-username/your-repo-name.git)
+    git clone https://github.com/sebovelan/CA-Clinic.git
     ```
     (Replace `your-github-username` and `your-repo-name` with your actual GitHub details.)
 2.  **Navigate to the project directory:**
