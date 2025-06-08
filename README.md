@@ -52,7 +52,7 @@ This website is designed for static site hosting.
 ## Author
 
 * **Sebastian Ovelar** (Initial Development and Structure)
-    * [LinkedIn Profile](https://www.linkedin.com/in/sebastian-anderson-3a0610170/) (Optional)
+    * [LinkedIn Profile](https://www.linkedin.com/in/sebastian-anderson-3a0610170/) 
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
