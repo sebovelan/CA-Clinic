@@ -338,7 +338,36 @@
         .count-up-animation {
             animation: countUp 1.5s ease-out forwards;
         }
+        /* Estilos para el menú móvil (hamburguesa) */
+        #mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0; /* Cambiado de 'right: 0' a 'left: 0' para que deslice desde la izquierda */
+            width: 100%;
+            height: 100%;
+            background-color: var(--white-bg); /* Fondo del menú móvil */
+            z-index: 999; /* Por debajo del logo de carga, pero por encima del contenido */
+            transform: translateX(100%); /* Inicialmente fuera de la pantalla (a la derecha) */
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 4rem; /* Espacio para el botón de cerrar */
+        }
 
+            #mobile-menu.is-open {
+                transform: translateX(0); /* Desliza hacia adentro */
+            }
+
+        #close-mobile-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--dark-text);
+            font-size: 2rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -355,26 +384,48 @@
        aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
-    <!-- Navigation Header -->
+    <!-- Header / Navegación -->
     <header class="bg-white shadow-sm py-4 sticky top-0 z-50">
         <nav class="container mx-auto px-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-dark-text">
                 Dra. Cynthia Anderson
             </a>
-            <ul class="flex space-x-6">
+            <!-- Botón del menú hamburguesa para móvil -->
+            <button id="mobile-menu-button" class="md:hidden text-dark-text text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Menú de navegación principal para escritorio -->
+            <ul class="hidden md:flex space-x-6" id="desktop-nav">
+                <!-- Añadido hidden md:flex -->
                 <li><a href="#servicios" class="text-light-text hover:text-primary-blue font-medium">Servicios</a></li>
                 <li><a href="#ortodoncia-general" class="text-light-text hover:text-primary-blue font-medium">Ortodoncia</a></li>
                 <li><a href="#alineacion-invisible" class="text-light-text hover:text-primary-blue font-medium">Alineación Invisible</a></li>
                 <li><a href="#sobre-mi" class="text-light-text hover:text-primary-blue font-medium">Sobre Mí</a></li>
                 <li><a href="#nuestro-equipo" class="text-light-text hover:text-primary-blue font-medium">Nuestro Equipo</a></li>
                 <li><a href="#consultorios" class="text-light-text hover:text-primary-blue font-medium">Consultorios</a></li>
+                <!-- <li><a href="#historias-de-sonrisas" class="text-light-text hover:text-primary-blue font-medium">Historias</a></li> -->
                 <li><a href="#cuidado-dental" class="text-light-text hover:text-primary-blue font-medium">Consejos</a></li>
                 <li><a href="#contacto" class="text-light-text hover:text-primary-blue font-medium">Contacto</a></li>
             </ul>
         </nav>
     </header>
-
+    <!-- Menú de navegación para móvil (se mostrará/ocultará con JS) -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-full bg-white-bg z-40 transform -translate-x-full transition-transform duration-300 ease-in-out p-4 pt-20">
+        <button id="close-mobile-menu" class="absolute top-4 right-4 text-dark-text text-3xl focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="flex flex-col space-y-4 text-center mt-8">
+            <li><a href="#servicios" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Servicios</a></li>
+            <li><a href="#ortodoncia-general" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Ortodoncia</a></li>
+            <li><a href="#alineacion-invisible" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Alineación Invisible</a></li>
+            <li><a href="#sobre-mi" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Sobre Mí</a></li>
+            <li><a href="#nuestro-equipo" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Nuestro Equipo</a></li>
+            <li><a href="#consultorios" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Consultorios</a></li>
+            <!-- <li><a href="#historias-de-sonrisas" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Historias</a></li> -->
+            <li><a href="#cuidado-dental" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Consejos</a></li>
+            <li><a href="#contacto" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Contacto</a></li>
+        </ul>
+    </div>
     <!-- Hero Section -->
     <section class="hero-split flex items-center justify-center py-20 px-4 text-center md:text-left">
         <div class="container mx-auto z-10 animate-on-scroll">
@@ -882,6 +933,16 @@
     </footer>
 
     <script>
+        // Función para alternar el menú móvil
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('is-open');
+        }
+
+        // Event listeners para abrir y cerrar el menú móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
+        document.getElementById('close-mobile-menu').addEventListener('click', toggleMobileMenu);
+
         // Desplaza suavemente la página hacia abajo después de que la sección del logo desaparece
         window.addEventListener('DOMContentLoaded', (event) => {
             const logoSection = document.querySelector('.logo-section');
