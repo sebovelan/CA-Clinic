@@ -43,26 +43,6 @@ To run this project locally:
     ```
 3.  **Open `index.html`:** Simply open the `index.html` file in your web browser.
 
-## Customization
-
-To make this website your own:
-
-1.  **Update Contact Information:**
-    * Edit phone numbers, email addresses, and office addresses in the `index.html` file.
-2.  **Replace Placeholders:**
-    * **Images:** Replace all placeholder images (`https://placehold.co/...` or Google Photos links) with actual photos of the clinic, Dr. Cynthia Anderson, the team, and patient before/after photos.
-    * **Videos:** Replace the placeholder video URL in the "Historias que Inspiran Sonrisas" and "Alineación Invisible" sections with actual video links.
-    * **Google Maps:** Update the `<iframe>` `src` attributes in the "Consultorios" section with the correct Google Maps embed codes for the Asunción and Capiatá offices.
-3.  **Formspree Integration:**
-    * Go to [Formspree.io](https://formspree.io/) and create a free account.
-    * Create a new form to get your unique Formspree ID.
-    * Replace `https://formspree.io/f/meokewko` in the `<form>` `action` attribute within the "Contacto" section with your actual Formspree endpoint.
-4.  **Social Media Links:**
-    * Update the `href` attributes for Instagram and Facebook links in the footer with the clinic's actual social media URLs.
-5.  **Branding:**
-    * Adjust `primary-blue` and `secondary-gray` colors in the `<style>` block to match the clinic's brand guidelines if desired.
-    * Consider creating custom SVGs or using more specific Font Awesome icons if available for further visual enhancement.
-
 ## Deployment
 
 This website is designed for static site hosting. 
