@@ -65,20 +65,14 @@ To make this website your own:
 
 ## Deployment
 
-This website is designed for static site hosting. You can easily deploy it using platforms like:
-
-* **GitHub Pages:** Host directly from this repository.
-* **Netlify:** Connect your GitHub repository for continuous deployment.
-* **Vercel:** Another excellent option for static site deployment.
+This website is designed for static site hosting. 
 
 ---
 
 ## Author
 
 * **Sebastian Ovelar** (Initial Development and Structure)
-    * [Your LinkedIn Profile](https://www.linkedin.com/in/yourprofile/) (Optional)
-    * [Your GitHub Profile](https://github.com/your-github-username) (Optional)
-
+    * [LinkedIn Profile](https://www.linkedin.com/in/sebastian-anderson-3a0610170/) (Optional)
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
