@@ -136,7 +136,14 @@
                 flex-direction: row; /* Dividir en columnas en pantallas grandes */
             }
         }
-
+        @media (max-width: 767px) { /* Nuevo: Reglas específicas para móviles */
+            .hero-split {
+                /* Nueva imagen de fondo para móviles, más adecuada al formato vertical */
+                background-image: linear-gradient(to bottom, rgba(127, 255, 212, 0.1), rgba(34, 211, 238, 0.1)), url('https://lh3.googleusercontent.com/pw/AP1GczMSjdOMsTPlKLDm-dov32f8EU8eM0r9csliB5XG88CVTT5vtCQrrLSPrApbsQDt5lFZ2IhHUUlPHfUxV3fEN78C4I-dh-faojm4ftKC-DBjtOsTnD4=w2400'); /* Placeholder para móvil */
+                background-size: cover;
+                background-position: center center;
+            }
+        }
         /* Estilos para la animación de Alineación Invisible (más dinámicos) */
         .alignment-animation-container {
             display: flex;
@@ -692,7 +699,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="sobre-mi" class="py-20 px-4">
+    <section id="sobre-mi" class="py-20 px-4 bg-white">
         <div class="container mx-auto text-center md:text-left grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="md:order-2 animate-on-scroll fade-in-right">
                 <p class="text-lg text-light-text mb-4">
@@ -704,8 +711,8 @@
             </div>
             <div class="md:order-1 flex justify-center animate-on-scroll fade-in-left">
                 <img src="https://lh3.googleusercontent.com/pw/AP1GczNV8wsg0uBzQTpAKyauOQS1ZUl6hXKntykv5YTZM51YG2h8CmdHaE9kw8DfDE2yh-J6L9aZntE4iQXzP6g6CAEBdirQvGHd5B4XZnefYNw-yP8o4qA=w2400"
-                        alt="Dra. Cynthia Anderson - Odontóloga y Ortodoncista"
-                        class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-medium">
+                     alt="Dra. Cynthia Anderson - Odontóloga y Ortodoncista"
+                     class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-medium">
             </div>
         </div>
     </section>
@@ -752,7 +759,7 @@
     </section>
 
     <!-- Clinic Locations Section -->
-    <section id="consultorios" class="py-20 px-4">
+    <section id="consultorios" class="py-20 px-4 bg-white">
         <div class="container mx-auto">
             <h2 class="section-title animate-on-scroll">Nuestros Cómodos Consultorios</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -893,7 +900,7 @@
     </section>
 
     <!-- Sección de Testimonios -->
-    <section class="py-20 px-4">
+    <section class="py-20 px-4 bg-white">
         <div class="container mx-auto">
             <h2 class="section-title animate-on-scroll">Lo que Dicen Nuestros Pacientes</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
