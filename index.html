@@ -118,13 +118,14 @@
         }
 
         /* Hero Split con el nuevo logo de fondo (imagen de sonrisas) */
+        /* Hero Split con el nuevo logo de fondo (imagen de sonrisas) */
         .hero-split {
             display: flex;
             flex-direction: column;
             min-height: calc(100vh - 80px); /* Altura de la vista menos la altura del header */
             position: relative;
             /* Se usa el background-image para la imagen de sonrisas con el degradado */
-            background-image: linear-gradient(to bottom, rgba(127, 255, 212, 0.4), rgba(34, 211, 238, 0.4)), url('https://lh3.googleusercontent.com/pw/AP1GczO13wqBRK_7HaSbRcCtwTGuV3EM9MCeJePPpcGYMxit2NH0jihypQa1yAqEFA6ZUJppgHu-L3r8Fq0TSIA05WJxj-OCDdTk6Z3VQPxIaBKwCSl7OwY=w2400'); /* Nueva imagen de familia sonriendo */
+            background-image: linear-gradient(to bottom, rgba(127, 255, 212, 0.1), rgba(34, 211, 238, 0.1)), url('https://lh3.googleusercontent.com/pw/AP1GczN27VrfZO6RGCl2gNaXbXaIfXV9CDaD2Rw-UvmxqVBc9HgAsVzh8KXwXMIE98z4pOTa_Un7NN9v9LBTIGev2bCgHO3CfdS0whQu1v_nInjRiyG5A04=w2400'); /* Nueva imagen de familia sonriendo */
             background-size: cover; /* Para que la imagen cubra todo el espacio */
             background-repeat: no-repeat;
             background-position: center center;
@@ -147,6 +148,7 @@
             margin-bottom: 2rem;
             position: relative;
         }
+
         .alignment-animation-item {
             width: 120px; /* Tamaño un poco más pequeño para el efecto */
             height: 120px;
@@ -160,38 +162,72 @@
             position: absolute;
         }
 
-        .alignment-animation-item:nth-child(1) {
-            animation-name: slideInLeftAndMeet;
-            animation-delay: 0.2s;
-        }
-        .alignment-animation-item:nth-child(2) {
-            animation-name: fadeInScaleCenter;
-            animation-delay: 0.5s;
-        }
-        .alignment-animation-item:nth-child(3) {
-            animation-name: slideInRightAndMeet;
-            animation-delay: 0.8s;
-        }
+            .alignment-animation-item:nth-child(1) {
+                animation-name: slideInLeftAndMeet;
+                animation-delay: 0.2s;
+            }
+
+            .alignment-animation-item:nth-child(2) {
+                animation-name: fadeInScaleCenter;
+                animation-delay: 0.5s;
+            }
+
+            .alignment-animation-item:nth-child(3) {
+                animation-name: slideInRightAndMeet;
+                animation-delay: 0.8s;
+            }
 
         /* Nuevos keyframes para que las imágenes se junten más en el centro */
         @keyframes slideInLeftAndMeet {
-            0% { transform: translateX(-300px); opacity: 0; }
-            100% { transform: translateX(-60px); opacity: 1; } /* Más cerca del centro */
+            0% {
+                transform: translateX(-300px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(-60px);
+                opacity: 1;
+            }
+            /* Más cerca del centro */
         }
+
         @keyframes slideInRightAndMeet {
-            0% { transform: translateX(300px); opacity: 0; }
-            100% { transform: translateX(60px); opacity: 1; } /* Más cerca del centro */
+            0% {
+                transform: translateX(300px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(60px);
+                opacity: 1;
+            }
+            /* Más cerca del centro */
         }
 
         /* Ajustes para pantallas más grandes para la animación */
         @media (min-width: 768px) {
             @keyframes slideInLeftAndMeet {
-                0% { transform: translateX(-400px); opacity: 0; }
-                100% { transform: translateX(-80px); opacity: 1; }
+                0% {
+                    transform: translateX(-400px);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: translateX(-80px);
+                    opacity: 1;
+                }
             }
+
             @keyframes slideInRightAndMeet {
-                0% { transform: translateX(400px); opacity: 0; }
-                100% { transform: translateX(80px); opacity: 1; }
+                0% {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: translateX(80px);
+                    opacity: 1;
+                }
             }
         }
 
@@ -202,10 +238,10 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            .animate-on-scroll.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
         /* Animaciones de entrada lateral para secciones específicas */
         .fade-in-left {
@@ -213,20 +249,22 @@
             transform: translateX(-50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .fade-in-left.is-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+
+            .fade-in-left.is-visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
         .fade-in-right {
             opacity: 0;
             transform: translateX(50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .fade-in-right.is-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+
+            .fade-in-right.is-visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
         .whatsapp-button {
             display: inline-flex;
@@ -243,11 +281,11 @@
             margin-top: 1rem;
         }
 
-        .whatsapp-button:hover {
-            background: #20ba5a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-        }
+            .whatsapp-button:hover {
+                background: #20ba5a;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            }
 
         .mail-button { /* Nuevo estilo para el botón de correo */
             display: inline-flex;
@@ -265,11 +303,11 @@
             margin-top: 1rem;
         }
 
-        .mail-button:hover {
-            background: var(--secondary-gray); /* Ligeramente más oscuro al pasar el mouse */
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
+            .mail-button:hover {
+                background: var(--secondary-gray); /* Ligeramente más oscuro al pasar el mouse */
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            }
 
         .whatsapp-floating {
             position: fixed;
@@ -292,10 +330,10 @@
             visibility: hidden; /* Oculto inicialmente */
         }
 
-        .whatsapp-floating.is-visible { /* Clase para hacerlo visible con JS */
-            opacity: 1;
-            visibility: visible;
-        }
+            .whatsapp-floating.is-visible { /* Clase para hacerlo visible con JS */
+                opacity: 1;
+                visibility: visible;
+            }
 
         /* Estilos para las estadísticas en el hero */
         .stats-container {
@@ -316,17 +354,11 @@
 
         .stat-number {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem; /* Números un poco más pequeños para móviles */
+            font-size: 2rem; /* Números más pequeños */
             font-weight: 800;
             color: var(--primary-blue);
             line-height: 1;
             margin-bottom: 0.5rem;
-        }
-
-        @media (min-width: 768px) { /* Aumenta el tamaño en pantallas más grandes */
-            .stat-number {
-                font-size: 2.5rem;
-            }
         }
 
         .stat-label {
@@ -338,20 +370,29 @@
 
         /* Animación de conteo para los números */
         @keyframes countUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .count-up-animation {
             animation: countUp 1.5s ease-out forwards;
         }
+
         /* Estilos para el menú móvil (hamburguesa) */
         #mobile-menu {
             position: fixed;
             top: 0;
-            left: 0; /* Cambiado de 'right: 0' a 'left: 0' para que deslice desde la izquierda */
+            right: 0; /* Desliza desde la derecha */
             width: 100%;
             height: 100%;
-            background-color: var(--white-bg); /* Fondo del menú móvil */
+            background-color: white; /* **CAMBIO CLAVE: Fondo blanco sólido** */
             z-index: 999; /* Por debajo del logo de carga, pero por encima del contenido */
             transform: translateX(100%); /* Inicialmente fuera de la pantalla (a la derecha) */
             transition: transform 0.3s ease-in-out;
@@ -362,27 +403,9 @@
             padding-top: 4rem; /* Espacio para el botón de cerrar */
         }
 
-        /* Estilos para el menú móvil (hamburguesa) */
-        #mobile-menu {
-            position: fixed;
-            top: 0;
-            right: 0; /* Asegura que el menú móvil se alinee a la derecha */
-            width: 100%; /* Ocupa todo el ancho */
-            height: 100%;
-            background-color: var(--white-bg); /* Fondo sólido para el menú móvil */
-            z-index: 999;
-            transform: translateX(100%); /* Inicialmente fuera de pantalla a la derecha */
-            transition: transform 0.3s ease-in-out; /* Transición para la animación de deslizado */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 4rem; /* Espacio para el botón de cerrar */
-        }
-
-        #mobile-menu.is-open {
-            transform: translateX(0); /* Desliza hacia adentro, visible */
-        }
+            #mobile-menu.is-open {
+                transform: translateX(0); /* Desliza hacia adentro */
+            }
 
         #close-mobile-menu {
             position: absolute;
@@ -392,27 +415,27 @@
             font-size: 2rem;
             cursor: pointer;
         }
-        .whatsapp-floating {
-            /* ... (propiedades existentes) ... */
-            opacity: 0; /* Oculto inicialmente */
-            visibility: hidden; /* Oculto inicialmente */
-        }
 
-        .whatsapp-floating.is-visible { /* Clase para hacerlo visible con JS */
-            opacity: 1;
-            visibility: visible;
-        }
-
-        @media (max-width: 767px) { /* Para pantallas más pequeñas que 768px (móviles) */
-            .whatsapp-floating {
-                top: auto; /* Desactiva la posición superior */
-                bottom: 1rem; /* Lo coloca en la parte inferior */
-                right: 1rem; /* Mantiene la posición derecha */
+        /* **NUEVOS AJUSTES DE ESPACIADO EN SECCIONES PARA MÓVILES** */
+        @media (max-width: 767px) { /* Solo aplica a pantallas pequeñas (móviles) */
+            #ortodoncia-general,
+            #alineacion-invisible,
+            #sobre-mi,
+            #consultorios,
+            #cuidado-dental,
+            #contacto {
+                padding-top: 3rem; /* Reducir padding-top */
+                padding-bottom: 3rem; /* Reducir padding-bottom */
+            }
+            /* Ajuste específico si es necesario para el hero */
+            .hero-split {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
             }
         }
     </style>
-</head>
-<body>
+    </head>
+    <body>
     <!-- Initial Logo Section -->
     <div class="logo-section">
         <h1 class="logo-text">CA</h1>
@@ -420,10 +443,10 @@
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/595981104314?text=Hola%20Dra.%20Anderson,%20me%20interesa%20agendar%20una%20consulta"
-       class="whatsapp-floating"
-       target="_blank"
-       id="whatsapp-float-btn"
-       aria-label="Contactar por WhatsApp">
+        class="whatsapp-floating"
+        target="_blank"
+        id="whatsapp-float-btn"
+        aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
     <!-- Header / Navegación -->
