@@ -316,11 +316,17 @@
 
         .stat-number {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2rem; /* Números más pequeños */
+            font-size: 1.8rem; /* Números un poco más pequeños para móviles */
             font-weight: 800;
             color: var(--primary-blue);
             line-height: 1;
             margin-bottom: 0.5rem;
+        }
+
+        @media (min-width: 768px) { /* Aumenta el tamaño en pantallas más grandes */
+            .stat-number {
+                font-size: 2.5rem;
+            }
         }
 
         .stat-label {
@@ -356,9 +362,27 @@
             padding-top: 4rem; /* Espacio para el botón de cerrar */
         }
 
-            #mobile-menu.is-open {
-                transform: translateX(0); /* Desliza hacia adentro */
-            }
+        /* Estilos para el menú móvil (hamburguesa) */
+        #mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0; /* Asegura que el menú móvil se alinee a la derecha */
+            width: 100%; /* Ocupa todo el ancho */
+            height: 100%;
+            background-color: var(--white-bg); /* Fondo sólido para el menú móvil */
+            z-index: 999;
+            transform: translateX(100%); /* Inicialmente fuera de pantalla a la derecha */
+            transition: transform 0.3s ease-in-out; /* Transición para la animación de deslizado */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 4rem; /* Espacio para el botón de cerrar */
+        }
+
+        #mobile-menu.is-open {
+            transform: translateX(0); /* Desliza hacia adentro, visible */
+        }
 
         #close-mobile-menu {
             position: absolute;
@@ -367,6 +391,24 @@
             color: var(--dark-text);
             font-size: 2rem;
             cursor: pointer;
+        }
+        .whatsapp-floating {
+            /* ... (propiedades existentes) ... */
+            opacity: 0; /* Oculto inicialmente */
+            visibility: hidden; /* Oculto inicialmente */
+        }
+
+        .whatsapp-floating.is-visible { /* Clase para hacerlo visible con JS */
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 767px) { /* Para pantallas más pequeñas que 768px (móviles) */
+            .whatsapp-floating {
+                top: auto; /* Desactiva la posición superior */
+                bottom: 1rem; /* Lo coloca en la parte inferior */
+                right: 1rem; /* Mantiene la posición derecha */
+            }
         }
     </style>
 </head>
@@ -429,10 +471,12 @@
     <!-- Hero Section -->
     <section class="hero-split flex items-center justify-center py-20 px-4 text-center md:text-left">
         <div class="container mx-auto z-10 animate-on-scroll">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-hero-text-color leading-tight mb-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-hero-text-color leading-tight mb-6">
+                <!-- Ajustado tamaño para móviles -->
                 Sonrisas Saludables para toda la Familia. Cuidado de confianza para Todas las Edades.
             </h1>
-            <p class="text-xl md:text-2xl text-hero-text-color mb-10">
+            <p class="text-lg sm:text-xl md:text-2xl text-hero-text-color mb-10">
+                <!-- Ajustado tamaño para móviles -->
                 Atención dental y de ortodoncia experta en un ambiente acogedor y profesional en Paraguay.
             </p>
 
@@ -455,8 +499,8 @@
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
                 <a href="https://wa.me/595981104314?text=Hola%20Dra.%20Anderson,%20me%20interesa%20agendar%20una%20consulta"
-                   class="whatsapp-button"
-                   target="_blank">
+                    class="whatsapp-button"
+                    target="_blank">
                     <i class="fab fa-whatsapp mr-2"></i> Consulta por WhatsApp
                 </a>
                 <a href="#contacto" class="mail-button">
@@ -464,7 +508,7 @@
                 </a>
             </div>
         </div>
-    </section>
+        </section>
 
     <!-- Services Section -->
     <section id="servicios" class="py-20 px-4 bg-secondary-gray">
@@ -561,8 +605,8 @@
                 </div>
                 <div class="animate-on-scroll fade-in-right">
                     <img src="https://lh3.googleusercontent.com/pw/AP1GczNZmuk3MkVtN2WyFd0zomhnV_b1sLPkGGP-R-rRoElV-cD4J7nls7okh1Uf_k3E50jVQldM9QleA4xB-BcklZR4razMTjISIf6TvBzyr-4bsEBvhmo=w2400"
-                         alt="Brackets Dentales"
-                         class="w-full rounded-xl shadow-medium">
+                            alt="Brackets Dentales"
+                            class="w-full rounded-xl shadow-medium">
                 </div>
             </div>
 
@@ -603,8 +647,8 @@
                 </div>
                 <div class="animate-on-scroll fade-in-right">
                     <img src="https://lh3.googleusercontent.com/pw/AP1GczOhowZuvgDtfCl9Cjt01cHEOYIP_bCutGsrRoVMC8zmTBIWNU37KJDhgvkN2uNlziaN9CoWkoy3EaAXwAhyqLh6eJiOltImNXz8Qby3yZD2JJVMLx0=w2400"
-                         alt="Alineadores Transparentes"
-                         class="w-full rounded-xl shadow-medium">
+                            alt="Alineadores Transparentes"
+                            class="w-full rounded-xl shadow-medium">
                 </div>
             </div>
 
@@ -647,8 +691,8 @@
             </div>
             <div class="md:order-1 flex justify-center animate-on-scroll fade-in-left">
                 <img src="https://lh3.googleusercontent.com/pw/AP1GczNV8wsg0uBzQTpAKyauOQS1ZUl6hXKntykv5YTZM51YG2h8CmdHaE9kw8DfDE2yh-J6L9aZntE4iQXzP6g6CAEBdirQvGHd5B4XZnefYNw-yP8o4qA=w2400"
-                     alt="Dra. Cynthia Anderson - Odontóloga y Ortodoncista"
-                     class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-medium">
+                        alt="Dra. Cynthia Anderson - Odontóloga y Ortodoncista"
+                        class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-medium">
             </div>
         </div>
     </section>
@@ -665,8 +709,8 @@
                 <!-- Team Member 1 -->
                 <div class="card p-8 flex flex-col md:flex-row items-center md:items-start text-center md:text-left animate-on-scroll fade-in-left">
                     <img src="https://lh3.googleusercontent.com/pw/AP1GczOfhPlJEZgqOYE_okLvkzurjzd4UBT29g5Evnt3l5NhtWO4GSEHEpFcZeLW4CWeN_53I7J5ZUb2nxi9YO3v9D8lXClFc2XIC4GR9YYTVdQlOanP_Ls=w2400"
-                         alt="Dra. Nathalia Paniagua"
-                         class="w-36 h-36 object-cover mb-6 md:mb-0 md:mr-8 shadow-soft">
+                            alt="Dra. Nathalia Paniagua"
+                            class="w-36 h-36 object-cover mb-6 md:mb-0 md:mr-8 shadow-soft">
                     <div>
                         <h3 class="text-3xl font-bold text-primary-blue mb-2">Dra. Nathalia Paniagua</h3>
                         <p class="text-xl font-semibold text-dark-text mb-4">Endodoncia y Rehabilitación Oral</p>
@@ -680,8 +724,8 @@
                 <!-- Team Member 2 -->
                 <div class="card p-8 flex flex-col md:flex-row items-center md:items-start text-center md:text-left animate-on-scroll fade-in-right">
                     <img src="https://lh3.googleusercontent.com/pw/AP1GczOqhTJXaRxEq_RErC43TCRaP8Mz8DdTG_7QBISsqhlqCtQR9Faj6zK9BRG2piyeHNrpuRvQP2OAzoDLgKjFmKX5-T0olM6DnlJ2eVU5SIPIdocboLI=w2400"
-                         alt="Dr. Rubén Cáceres"
-                         class="w-36 h-36 object-cover mb-6 md:mb-0 md:mr-8 shadow-soft">
+                            alt="Dr. Rubén Cáceres"
+                            class="w-36 h-36 object-cover mb-6 md:mb-0 md:mr-8 shadow-soft">
                     <div>
                         <h3 class="text-3xl font-bold text-primary-blue mb-2">Dr. Rubén Cáceres</h3>
                         <p class="text-xl font-semibold text-dark-text mb-4">Cirugía e Implantes Dentales</p>
@@ -873,22 +917,22 @@
                         <div>
                             <label for="name" class="block text-lg font-medium text-dark-text mb-2">Nombre Completo</label>
                             <input type="text" id="name" name="name" required
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200">
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200">
                         </div>
                         <div>
                             <label for="email" class="block text-lg font-medium text-dark-text mb-2">Correo Electrónico</label>
                             <input type="email" id="email" name="email" required
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200">
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200">
                         </div>
                         <div>
                             <label for="subject" class="block text-lg font-medium text-dark-text mb-2">Asunto</label>
                             <input type="text" id="subject" name="subject"
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200">
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200">
                         </div>
                         <div>
                             <label for="message" class="block text-lg font-medium text-dark-text mb-2">Su Mensaje</label>
                             <textarea id="message" name="message" rows="5" required
-                                      class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></textarea>
+                                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full">Enviar Mensaje</button>
                     </form>
@@ -937,6 +981,7 @@
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('is-open');
+            console.log('Mobile menu toggled:', mobileMenu.classList.contains('is-open')); // Para depuración
         }
 
         // Event listeners para abrir y cerrar el menú móvil
