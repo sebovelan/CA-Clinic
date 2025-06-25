@@ -1,16 +1,23 @@
 <!DOCTYPE html>
+<!-- The "lang" attribute helps search engines understand the language of the page. -->
 <html lang="es">
 <head>
+    <!-- Standard metadata tells the browser how to render the page. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dra. Cynthia Anderson - Odontología y Ortodoncia</title>
-    <!-- Carga de Tailwind CSS para diseño responsivo y clases de utilidad -->
+
+    <!-- External Libraries & Fonts -->
+    <!-- This loads Tailwind CSS, which is what we use for all the styling and layout. -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- This loads the fonts we use: Inter for general text, Montserrat for big titles, and Dancing Script for the mobile menu. -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
-    <!-- Iconos de Font Awesome para una mejor representación visual -->
+    <!-- This loads Font Awesome, which gives us all the nice icons. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Internal CSS Styles -->
     <style>
-        /* Configura Tailwind para usar la fuente Inter y define la nueva paleta de colores */
+        /* This is where we configure our design system using Tailwind CSS. */
         tailwind.config = {
             theme:
 
@@ -18,6 +25,7 @@
             extend:
 
         {
+            /* Here, we make our custom fonts available to use with Tailwind classes. */
             fontFamily:
 
         {
@@ -25,13 +33,13 @@
         }
 
         ,
+        /* This is our custom color palette. We give them names to easily reuse them. */
         colors: {
-            'primary-blue': '#7FFFD4', /* Aquamarine brillante (Accent) */
-            /* CODE CLEANUP: Removed unused 'soft-blue' color */
-            'secondary-gray': '#F0F0F0', 'dark-text': '#282C34', 'light-text': '#6B7280', 'white-bg': '#FAF8F5', 'hero-text-color': '#FFFFFF', 'beige-bg': '#F5F5DC', 'dark-grey-bg': '#282C34',
+            'primary-blue': '#7FFFD4', 'secondary-gray': '#F0F0F0', 'dark-text': '#282C34', 'light-text': '#6B7280', 'beige-bg': '#F5F5DC', 'dark-grey-bg': '#282C34',
         }
 
         ,
+        /* Defining some preset shadow styles for a consistent look. */
         boxShadow: {
             'soft': '0 4px 12px rgba(0, 0, 0, 0.08)', 'medium': '0 8px 24px rgba(0, 0, 0, 0.12)',
         }
@@ -43,6 +51,7 @@
         ,
         }
 
+        /* Basic styles for the whole page. */
         body {
             font-family: 'Inter', sans-serif;
             color: #282C34;
@@ -50,28 +59,33 @@
             line-height: 1.6;
         }
 
+        /* This styles the text that a user highlights with their mouse. */
         ::selection {
             background-color: #7FFFD4;
             color: #282C34;
         }
 
+        /* A simple container to keep our content centered and not too wide. */
         .container {
             max-width: 1200px;
         }
 
+        /* This is the base style for our "card" components. */
         .card {
             background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); /* Creates the "frosted glass" effect. */
             border-radius: 1.5rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
+            /* A nice little lift effect when you hover over a card. */
             .card:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
             }
 
+        /* Base styles for our main buttons. */
         .btn-primary {
             @apply bg-primary-blue text-dark-text font-semibold py-3 px-6 rounded-full shadow-soft transition-all duration-300 ease-in-out;
         }
@@ -80,13 +94,14 @@
                 @apply bg-opacity-90 shadow-medium transform scale-105;
             }
 
+        /* A consistent style for all the main section titles. */
         .section-title {
             @apply text-4xl md:text-5xl font-bold text-center mb-10 text-dark-text;
         }
 
-        /* Styles for dark sections */
+        /* Styles for our alternating "dark mode" sections. */
         .section-dark {
-            background-color: #282C34; /* Dark Grey Background */
+            background-color: #282C34;
         }
 
             .section-dark .section-title,
@@ -95,7 +110,7 @@
             }
 
             .section-dark p {
-                color: #F5F5DC; /* Beige Text */
+                color: #F5F5DC; /* Beige text for readability on dark backgrounds. */
             }
 
             .section-dark .card {
@@ -108,10 +123,10 @@
                 }
 
                 .section-dark .card .text-light-text {
-                    color: #D1D5DB; /* Lighter grey for text on dark cards */
+                    color: #D1D5DB;
                 }
 
-
+        /* This is the intro animation with the "CA" logo that fades out. */
         .logo-section {
             background-color: white;
             color: #F9F6F0;
@@ -166,6 +181,7 @@
             }
         }
 
+        /* The main hero section at the top of the page. */
         .hero-split {
             display: flex;
             flex-direction: column;
@@ -175,7 +191,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            background-attachment: scroll;
+            background-attachment: scroll; /* Scrolls like a normal section. */
         }
 
         @media (min-width: 768px) {
@@ -190,21 +206,25 @@
             }
         }
 
+        /* This is the special section that creates the parallax scrolling effect. */
         .parallax-divider {
             height: 400px;
             background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://lh3.googleusercontent.com/pw/AP1GczOhowZuvgDtfCl9Cjt01cHEOYIP_bCutGsrRoVMC8zmTBIWNU37KJDhgvkN2uNlziaN9CoWkoy3EaAXwAhyqLh6eJiOltImNXz8Qby3yZD2JJVMLx0=w2400');
+            /* THIS IS THE MAGIC! 'fixed' tells the background to stay still while the page scrolls over it. */
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
         }
 
+        /* On mobile, 'fixed' can be laggy, so we turn it off and make it scroll normally. */
         @media (max-width: 767px) {
             .parallax-divider {
                 background-attachment: scroll;
             }
         }
 
+        /* This handles the subtle fade-in and slide-up animation for sections as you scroll. */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
@@ -216,6 +236,7 @@
                 transform: translateY(0);
             }
 
+        /* Styles for the contact buttons. */
         .whatsapp-button, .mail-button {
             display: inline-flex;
             align-items: center;
@@ -252,6 +273,7 @@
                 box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             }
 
+        /* Styles for the little WhatsApp icon that floats in the corner. */
         .whatsapp-floating {
             position: fixed;
             bottom: 1rem;
@@ -278,6 +300,7 @@
                 visibility: visible;
             }
 
+        /* Styles for the stats counters in the hero section. */
         .stats-container {
             display: flex;
             flex-wrap: wrap;
@@ -312,11 +335,11 @@
         .stat-label {
             font-size: 1rem;
             font-weight: 600;
-            color: white;
             opacity: 0.9;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
 
+        /* Styles for the mobile navigation menu that slides in. */
         #mobile-menu {
             position: fixed;
             top: 0;
@@ -329,9 +352,9 @@
             transition: transform 0.3s ease-in-out;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Changed to align items to the top */
+            justify-content: flex-start;
             align-items: center;
-            padding-top: 6rem; /* Increased padding */
+            padding-top: 6rem;
         }
 
             #mobile-menu.is-open {
@@ -340,7 +363,7 @@
 
         #close-mobile-menu {
             position: absolute;
-            top: 1.5rem; /* Adjusted position */
+            top: 1.5rem;
             right: 1.5rem;
             color: #282C34;
             font-size: 2rem;
@@ -349,11 +372,13 @@
     </style>
 </head>
 <body class="bg-secondary-gray">
-    <!-- CODE CLEANUP: Removed the unnecessary page-content wrapper div -->
+
+    <!-- The initial logo animation when the page first loads. -->
     <div class="logo-section">
         <h1 class="logo-text">CA</h1>
     </div>
 
+    <!-- The floating WhatsApp button in the corner. -->
     <a href="https://wa.me/595981104314?text=Hola%20Dra.%20Anderson,%20me%20interesa%20agendar%20una%20consulta"
        class="whatsapp-floating"
        target="_blank"
@@ -361,14 +386,18 @@
        aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- The main header that sticks to the top of the page when you scroll. -->
     <header class="bg-white/80 backdrop-blur-sm shadow-sm py-4 sticky top-0 z-50">
         <nav class="container mx-auto px-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-dark-text">
                 Dra. Cynthia Anderson
             </a>
+            <!-- The "hamburger" button that only shows up on mobile. -->
             <button id="mobile-menu-button" class="md:hidden text-dark-text text-2xl focus:outline-none">
                 <i class="fas fa-bars"></i>
             </button>
+            <!-- The desktop navigation links. -->
             <ul class="hidden md:flex space-x-6" id="desktop-nav">
                 <li><a href="#servicios" class="text-light-text hover:text-primary-blue font-medium">Servicios</a></li>
                 <li><a href="#ortodoncia-general" class="text-light-text hover:text-primary-blue font-medium">Ortodoncia</a></li>
@@ -381,6 +410,8 @@
             </ul>
         </nav>
     </header>
+
+    <!-- The mobile navigation menu itself. It's hidden by default. -->
     <div id="mobile-menu" class="md:hidden">
         <button id="close-mobile-menu">
             <i class="fas fa-times"></i>
@@ -400,18 +431,31 @@
         </ul>
     </div>
 
+    <!-- This is the top section of the page, the "hero" image and text. -->
     <section class="hero-split flex items-center justify-center py-20 px-4 text-center md:text-left">
         <div class="container mx-auto z-10 animate-on-scroll">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-hero-text-color leading-tight mb-6" style="text-shadow: 1px 1px 8px rgba(0,0,0,0.4)">
-                Sonrisas Saludables para toda la Familia.
+
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-hero-text-color leading-tight mb-6" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);">
+                Cuidamos la Sonrisa de tu Familia.
             </h1>
-            <p class="text-lg sm:text-xl md:text-2xl text-hero-text-color mb-10" style="text-shadow: 1px 1px 8px rgba(0,0,0,0.3)">
-                Atención dental y de ortodoncia experta en un ambiente acogedor y profesional en Paraguay.
+
+            <p class="text-lg sm:text-xl md:text-2xl text-hero-text-color mb-10" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">
+                Combinando 30 años de experiencia con un ambiente cálido y moderno para ofrecerte el mejor cuidado dental en Paraguay.
             </p>
-            <div class="stats-container animate-on-scroll">
-                <div class="stat-item"><div class="stat-number" data-target="20">0</div><div class="stat-label">Años de Experiencia</div></div>
-                <div class="stat-item"><div class="stat-number" data-target="800">0</div><div class="stat-label">Sonrisas Transformadas</div></div>
-                <div class="stat-item"><div class="stat-number" data-target="100">0</div><div class="stat-label">% de cuidado para Ti</div></div>
+
+            <div class="stats-container animate-on-scroll text-hero-text-color">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="20">0</div>
+                    <div class="stat-label">Años de Experiencia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="800">0</div>
+                    <div class="stat-label">Sonrisas Transformadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">% de cuidado para Ti</div>
+                </div>
             </div>
             <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
                 <a href="https://wa.me/595981104314?text=Hola%20Dra.%20Anderson,%20me%20interesa%20agendar%20una%20consulta" class="whatsapp-button" target="_blank"><i class="fab fa-whatsapp mr-2"></i> Consulta por WhatsApp</a>
@@ -420,7 +464,8 @@
         </div>
     </section>
 
-    <!-- Light Section -->
+    <!-- This begins the main content of the page, alternating between light and dark sections. -->
+    <!-- Light Section: Services -->
     <section id="servicios" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
         <div class="container mx-auto">
             <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
@@ -435,27 +480,28 @@
         </div>
     </section>
 
-    <!-- Dark Section -->
+    <!-- Dark Section: General Orthodontics -->
     <section id="ortodoncia-general" class="py-20 px-4 section-dark">
         <div class="container mx-auto"><p class="text-xl text-center mb-10 max-w-3xl mx-auto animate-on-scroll">Más allá de la estética, la ortodoncia es una inversión en tu salud y bienestar. Descubre cómo podemos transformar tu sonrisa con un enfoque personalizado.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12"><div class="animate-on-scroll"><h3 class="text-3xl font-bold mb-4">Brackets Tradicionales: Durabilidad y Resultados</h3><p class="text-lg mb-4">Los brackets metálicos son una solución clásica y altamente efectiva para corregir una amplia gama de problemas de alineación dental. Su durabilidad y resistencia los hacen ideales para casos complejos, ofreciendo resultados predecibles y una sonrisa perfectamente recta.</p><p class="text-lg">También ofrecemos opciones de brackets estéticos (cerámicos o de zafiro) que son menos visibles, combinando la eficacia de la ortodoncia tradicional con una estética mejorada para aquellos que buscan discreción durante el tratamiento.</p></div><div class="animate-on-scroll"><img src="https://lh3.googleusercontent.com/pw/AP1GczNZmuk3MkVtN2WyFd0zomhnV_b1sLPkGGP-R-rRoElV-cD4J7nls7okh1Uf_k3E50jVQldM9QleA4xB-BcklZR4razMTjISIf6TvBzyr-4bsEBvhmo=w2400" alt="Brackets Dentales" class="w-full rounded-xl shadow-medium"></div></div></div>
     </section>
 
-    <!-- Light Section -->
+    <!-- Light Section: Invisible Alignment -->
     <section id="alineacion-invisible" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
         <div class="container mx-auto">
             <p class="text-xl text-light-text text-center mb-10 max-w-3xl mx-auto animate-on-scroll">Transforma tu sonrisa de manera cómoda y prácticamente imperceptible con nuestros avanzados alineadores transparentes.</p>
             <div class="max-w-4xl mx-auto text-center md:text-left animate-on-scroll">
                 <h3 class="text-3xl font-bold text-dark-text mb-4">¿Qué es la Alineación Invisible y Cómo Funciona?</h3>
-                <p class="text-lg text-light-text mb-4">La alineación invisible es una revolucionaria alternativa a los brackets tradicionales. Consiste en una serie de alineadores transparentes y removibles, hechos a medida, que mueven tus dientes gradualmente hacia la posición deseada. Cada juego de alineadores se usa por aproximadamente 1-2 semanas y se reemplaza por el siguiente en la secuencia.</p><p class="text-lg text-light-text">Utilizamos tecnología 3D de vanguardia para planificar cada etapa de tu tratamiento, permitiéndote ver cómo quedará tu sonrisa antes de comenzar. Este método es ideal para quienes buscan discreción, comodidad y flexibilidad durante su proceso de ortodoncia.</p>
+                <p class="text-lg text-light-text mb-4">La alineación invisible es una revolucionaria alternativa a los brackets tradicionales. Consiste en una serie de alineadores transparentes y removibles, hechos a medida, que mueven tus dientes gradualmente hacia la posición deseada. Cada juego de alineadores se usa por aproximadamente 1-2 weeks y se reemplaza por el siguiente en la secuencia.</p><p class="text-lg text-light-text">Utilizamos tecnología 3D de vanguardia para planificar cada etapa de tu tratamiento, permitiéndote ver cómo quedará tu sonrisa antes de comenzar. Este método es ideal para quienes buscan discreción, comodidad y flexibilidad durante su proceso de ortodoncia.</p>
             </div>
             <div class="text-center mt-12 mb-12 animate-on-scroll"><h3 class="text-3xl font-bold text-dark-text mb-6">Conozca más sobre la Alineación Invisible en este video:</h3><div class="w-full max-w-3xl mx-auto rounded-xl overflow-hidden shadow-medium"><div class="relative" style="padding-bottom: 56.25%; height: 0;"><iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Xd5wKqQkT-A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Alineación Invisible - Video Educativo"></iframe></div></div><p class="text-lg text-light-text italic max-w-3xl mx-auto mt-6">Descubre visualmente el proceso y los beneficios de los alineadores transparentes para lograr la sonrisa que siempre has deseado.</p></div>
             <div class="text-center animate-on-scroll"><a href="#contacto" class="btn-primary">¡Consulta por tu Alineación Invisible Hoy!</a></div>
         </div>
     </section>
 
+    <!-- Parallax Divider Section -->
     <section class="parallax-divider"></section>
 
-    <!-- Dark Section -->
+    <!-- Dark Section: About Me -->
     <section id="sobre-mi" class="py-20 px-4 section-dark">
         <div class="container mx-auto text-center md:text-left grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="flex justify-center animate-on-scroll md:order-1">
@@ -469,7 +515,7 @@
         </div>
     </section>
 
-    <!-- Light Section -->
+    <!-- Light Section: Our Team -->
     <section id="nuestro-equipo" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
         <div class="container mx-auto">
             <h2 class="section-title animate-on-scroll">Nuestro Equipo</h2>
@@ -497,17 +543,17 @@
         </div>
     </section>
 
-    <!-- Dark Section -->
+    <!-- Dark Section: Clinics -->
     <section id="consultorios" class="py-20 px-4 section-dark">
         <div class="container mx-auto"><h2 class="section-title animate-on-scroll">Nuestros Cómodos Consultorios</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div class="card p-8 flex flex-col animate-on-scroll"><h3 class="mb-4">CA Odontología Integral - Capiatá</h3><p class="mb-4"><span class="font-bold text-beige-bg">Dirección:</span> Emilio Gabriaguez 324 esquina Estudiantes Capiateños, Capiatá, Paraguay</p><p class="mb-4"><span class="font-bold text-beige-bg">Teléfono:</span> 0981104314</p><p class="mb-6"><span class="font-bold text-beige-bg">Horario:</span> Lun-Vie: 9:00 AM - 6:00 PM, Sáb: 9:00 AM - 1:00 PM</p><div class="w-full h-64 bg-gray-600 rounded-lg overflow-hidden shadow-inner mb-4"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.557157239561!2d-57.44234411969047!3d-25.35263707208665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945db39c7ead3c87%3A0xee30799e49c9ca63!2sC.A%20Odontolog%C3%ADa%20Integral!5e0!3m2!1ses!2spy!4v1749323475596!5m2!1ses!2spy" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de CA Odontología Integral - Capiatá"></iframe></div><a href="#contacto" class="btn-primary self-start">Agendar en Capiatá</a></div><div class="card p-8 flex flex-col animate-on-scroll"><h3 class="mb-4">Consultorio Dra. Cynthia Anderson - Asunción</h3><p class="mb-4"><span class="font-bold text-beige-bg">Dirección:</span> Lillo 1745 entre Brizuela y Cap Motta, Asunción, Paraguay</p><p class="mb-4"><span class="font-bold text-beige-bg">Teléfono:</span> 0981104314</p><p class="mb-6"><span class="font-bold text-beige-bg">Horario:</span> Mar-Sáb: 10:00 AM - 7:00 PM</p><div class="w-full h-64 bg-gray-600 rounded-lg overflow-hidden shadow-inner mb-4"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7214.637002938251!2d-57.580013317409126!3d-25.293501017542024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da979a9642595%3A0xbea722df71d2ceb3!2sDr%20Cynthia%20Anderson%20-%20Odontolog%C3%ADa%20general%20y%20Ortodocia!5e0!3m2!1ses!2spy!4v1749323316621!5m2!1ses!2spy" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Consultorio Dra. Cynthia Anderson - Asunción"></iframe></div><a href="#contacto" class="btn-primary self-start">Agendar en Asunción</a></div></div></div>
     </section>
 
-    <!-- Light Section -->
+    <!-- Light Section: Dental Care Tips -->
     <section id="cuidado-dental" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
         <div class="container mx-auto"><h2 class="section-title animate-on-scroll">Consejos para una Sonrisa Saludable</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-brush text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Cepillado Correcto</h3><p class="text-light-text">Cepille sus dientes al menos dos veces al día durante dos minutos, usando una pasta dental con flúor. No olvide limpiar su lengua.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-tooth text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Uso de Hilo Dental</h3><p class="text-light-text">El hilo dental es esencial para remover la placa y los restos de comida entre los dientes y debajo de la línea de las encías.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-calendar-check text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Visitas Regulares</h3><p class="text-light-text">Agende revisiones y limpiezas dentales cada seis meses. La detección temprana previene problemas mayores.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-apple-whole text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Dieta Saludable</h3><p class="text-light-text">Reduzca el consumo de azúcares y alimentos ácidos. Una dieta balanceada es clave para la salud dental y general.</p></div></div></div><div class="text-center animate-on-scroll"><h3 class="text-2xl font-bold mb-4 text-dark-text">Síganos en Redes Sociales</h3><div class="flex justify-center space-x-6"><a href="https://www.instagram.com/ca_odontologia_integral/" target="_blank" class="text-primary-blue hover:text-dark-text transition-colors duration-200"><i class="fab fa-instagram text-4xl"></i></a><a href="https://www.facebook.com/Caodonto1" target="_blank" class="text-primary-blue hover:text-dark-text transition-colors duration-200"><i class="fab fa-facebook text-4xl"></i></a></div></div></div>
     </section>
 
-    <!-- Dark Section -->
+    <!-- Dark Section: Testimonials -->
     <section id="testimonios" class="py-20 px-4 section-dark">
         <div class="container mx-auto">
             <h2 class="section-title animate-on-scroll">Lo que Dicen Nuestros Pacientes</h2>
@@ -526,7 +572,7 @@
         </div>
     </section>
 
-    <!-- Light Section -->
+    <!-- Light Section: Contact -->
     <section id="contacto" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
         <div class="container mx-auto text-center"><h2 class="section-title animate-on-scroll">Póngase en Contacto</h2><p class="text-xl text-light-text mb-8 max-w-3xl mx-auto animate-on-scroll">¿Listo para una sonrisa más saludable y brillante? Complete el formulario o contáctenos directamente.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-8"><div class="card p-8 text-left animate-on-scroll"><h3 class="text-2xl font-bold text-dark-text mb-6">Envíanos un Mensaje</h3><form action="https://formspree.io/f/meokewko" method="POST" class="space-y-6"><div><label for="name" class="block text-lg font-medium text-dark-text mb-2">Nombre Completo</label><input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="email" class="block text-lg font-medium text-dark-text mb-2">Correo Electrónico</label><input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="subject" class="block text-lg font-medium text-dark-text mb-2">Asunto</label><input type="text" id="subject" name="subject" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="message" class="block text-lg font-medium text-dark-text mb-2">Su Mensaje</label><textarea id="message" name="message" rows="5" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></textarea></div><button type="submit" class="btn-primary w-full">Enviar Mensaje</button></form><p id="form-status" class="mt-4 text-center text-sm font-medium"></p></div><div class="card p-8 flex flex-col justify-between animate-on-scroll"><div><h3 class="text-2xl font-bold text-dark-text mb-6">Información de Contacto Directo</h3><p class="text-lg text-light-text mb-4"><i class="fas fa-phone-alt text-primary-blue mr-3"></i><span class="font-semibold text-dark-text">Asuncion y Capiatá:</span> <a href="tel:+595981104314" class="hover:underline">0981104314</a></p></div><div class="mt-auto"><h3 class="text-2xl font-bold text-dark-text mb-4">Horarios de Atención</h3><p class="text-lg text-light-text mb-2"><span class="font-semibold text-dark-text">Capiatá:</span> Mar-Jue: 2:00 PM - 7:00 PM, Sáb: 8:30 AM - 1:00 PM</p><p class="text-lg text-light-text"><span class="font-semibold text-dark-text">Asunción:</span> Lun-Mie-Vie: 9:00 AM - 6:00 PM</p></div></div></div></div>
     </section>
@@ -538,40 +584,52 @@
             <p class="text-sm mt-2 opacity-80">Website by sebovelan</p>
         </div>
     </footer>
-    </div>
+
     <script>
+        // --- Mobile Menu Toggle ---
+        // This function adds or removes the 'is-open' class to the mobile menu, which makes it slide into view.
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('is-open');
         }
 
+        // We listen for clicks on the hamburger button and the close button to run our function.
         document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
         document.getElementById('close-mobile-menu').addEventListener('click', toggleMobileMenu);
 
+        // --- Page Load and Scroll Animations ---
+        // This function runs once all the HTML is loaded.
         window.addEventListener('DOMContentLoaded', (event) => {
-            // FIX: Force page to scroll to top on refresh
+
+            // This small but important script ensures the page starts at the very top on refresh.
             if ('scrollRestoration' in history) {
                 history.scrollRestoration = 'manual';
             }
             window.scrollTo(0, 0);
 
+            // This handles the fade-out of the initial logo screen.
             const logoSection = document.querySelector('.logo-section');
             logoSection.addEventListener('animationend', () => {
                 logoSection.style.display = 'none';
                 document.getElementById('whatsapp-float-btn').classList.add('is-visible');
             });
 
+            // This sets up the "animate on scroll" feature.
             const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+
+            // The Intersection Observer is a modern browser API that efficiently checks when an element enters the screen.
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    // When an element is on screen...
                     if (entry.isIntersecting) {
+                        // ...we add the 'is-visible' class, which triggers our CSS fade-in animation.
                         entry.target.classList.add('is-visible');
 
+                        // Special logic for the hero stats counter animation.
                         if (entry.target.classList.contains('stats-container')) {
                             entry.target.querySelectorAll('.stat-number').forEach(numberElement => {
                                 const target = parseInt(numberElement.dataset.target);
-                                if (numberElement.dataset.animated) return;
-                                numberElement.dataset.animated = "true";
+                                if (numberElement.dataset.animated) return; // Don't animate more than once
                                 let current = 0;
                                 const increment = target / 100;
                                 const updateCount = () => {
@@ -586,11 +644,13 @@
                                 updateCount();
                             });
                         }
+                        // Once an element has been animated, we stop watching it to save performance.
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
 
+            // We tell the observer to watch every element that has the 'animate-on-scroll' class.
             animateOnScrollElements.forEach(element => {
                 observer.observe(element);
             });
