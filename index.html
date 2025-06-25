@@ -6,16 +6,10 @@
     <title>Dra. Cynthia Anderson - Odontología y Ortodoncia</title>
     <!-- Carga de Tailwind CSS para diseño responsivo y clases de utilidad -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <!-- Iconos de Font Awesome para una mejor representación visual -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* Define CSS variables for the cursor glow effect */
-        :root {
-            --cursor-x: 50vw;
-            --cursor-y: 50vh;
-        }
-
         /* Configura Tailwind para usar la fuente Inter y define la nueva paleta de colores */
         tailwind.config = {
             theme:
@@ -27,13 +21,14 @@
             fontFamily:
 
         {
-            inter: ['Inter', 'sans-serif'], montserrat: ['Montserrat', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'], montserrat: ['Montserrat', 'sans-serif'], 'dancing': ['Dancing Script', 'cursive'],
         }
 
         ,
         colors: {
             'primary-blue': '#7FFFD4', /* Aquamarine brillante (Accent) */
-            'soft-blue': '#AEC6CF', 'secondary-gray': '#F0F0F0', 'dark-text': '#282C34', 'light-text': '#6B7280', 'white-bg': '#FAF8F5', 'hero-text-color': '#FFFFFF', 'beige-bg': '#F5F5DC', 'dark-grey-bg': '#282C34',
+            /* CODE CLEANUP: Removed unused 'soft-blue' color */
+            'secondary-gray': '#F0F0F0', 'dark-text': '#282C34', 'light-text': '#6B7280', 'white-bg': '#FAF8F5', 'hero-text-color': '#FFFFFF', 'beige-bg': '#F5F5DC', 'dark-grey-bg': '#282C34',
         }
 
         ,
@@ -53,18 +48,6 @@
             color: #282C34;
             background-color: #F0F0F0;
             line-height: 1.6;
-            background: none;
-        }
-
-        #cursor-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient( 600px at var(--cursor-x) var(--cursor-y), rgba(174, 198, 207, 0.15), transparent 80% );
-            z-index: -1;
-            transition: background 0.1s ease-out;
         }
 
         ::selection {
@@ -346,9 +329,9 @@
             transition: transform 0.3s ease-in-out;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Changed to align items to the top */
             align-items: center;
-            padding-top: 4rem;
+            padding-top: 6rem; /* Increased padding */
         }
 
             #mobile-menu.is-open {
@@ -357,8 +340,8 @@
 
         #close-mobile-menu {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 1.5rem; /* Adjusted position */
+            right: 1.5rem;
             color: #282C34;
             font-size: 2rem;
             cursor: pointer;
@@ -366,195 +349,197 @@
     </style>
 </head>
 <body class="bg-secondary-gray">
-    <div id="page-content" class="relative">
-        <div class="logo-section">
-            <h1 class="logo-text">CA</h1>
-        </div>
+    <!-- CODE CLEANUP: Removed the unnecessary page-content wrapper div -->
+    <div class="logo-section">
+        <h1 class="logo-text">CA</h1>
+    </div>
 
-        <a href="https://wa.me/595981104314?text=Hola%20Dra.%20Anderson,%20me%20interesa%20agendar%20una%20consulta"
-           class="whatsapp-floating"
-           target="_blank"
-           id="whatsapp-float-btn"
-           aria-label="Contactar por WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <header class="bg-white/80 backdrop-blur-sm shadow-sm py-4 sticky top-0 z-50">
-            <nav class="container mx-auto px-4 flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold text-dark-text">
-                    Dra. Cynthia Anderson
-                </a>
-                <button id="mobile-menu-button" class="md:hidden text-dark-text text-2xl focus:outline-none">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="hidden md:flex space-x-6" id="desktop-nav">
-                    <li><a href="#servicios" class="text-light-text hover:text-primary-blue font-medium">Servicios</a></li>
-                    <li><a href="#ortodoncia-general" class="text-light-text hover:text-primary-blue font-medium">Ortodoncia</a></li>
-                    <li><a href="#alineacion-invisible" class="text-light-text hover:text-primary-blue font-medium">Alineación Invisible</a></li>
-                    <li><a href="#sobre-mi" class="text-light-text hover:text-primary-blue font-medium">Sobre Mí</a></li>
-                    <li><a href="#nuestro-equipo" class="text-light-text hover:text-primary-blue font-medium">Nuestro Equipo</a></li>
-                    <li><a href="#consultorios" class="text-light-text hover:text-primary-blue font-medium">Consultorios</a></li>
-                    <li><a href="#cuidado-dental" class="text-light-text hover:text-primary-blue font-medium">Consejos</a></li>
-                    <li><a href="#contacto" class="text-light-text hover:text-primary-blue font-medium">Contacto</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div id="mobile-menu" class="md:hidden">
-            <button id="close-mobile-menu">
-                <i class="fas fa-times"></i>
+    <a href="https://wa.me/595981104314?text=Hola%20Dra.%20Anderson,%20me%20interesa%20agendar%20una%20consulta"
+       class="whatsapp-floating"
+       target="_blank"
+       id="whatsapp-float-btn"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <header class="bg-white/80 backdrop-blur-sm shadow-sm py-4 sticky top-0 z-50">
+        <nav class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-dark-text">
+                Dra. Cynthia Anderson
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-dark-text text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
             </button>
-            <ul class="flex flex-col space-y-4 text-center mt-8">
-                <li><a href="#servicios" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Servicios</a></li>
-                <li><a href="#ortodoncia-general" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Ortodoncia</a></li>
-                <li><a href="#alineacion-invisible" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Alineación Invisible</a></li>
-                <li><a href="#sobre-mi" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Sobre Mí</a></li>
-                <li><a href="#nuestro-equipo" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Nuestro Equipo</a></li>
-                <li><a href="#consultorios" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Consultorios</a></li>
-                <li><a href="#cuidado-dental" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Consejos</a></li>
-                <li><a href="#contacto" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Contacto</a></li>
+            <ul class="hidden md:flex space-x-6" id="desktop-nav">
+                <li><a href="#servicios" class="text-light-text hover:text-primary-blue font-medium">Servicios</a></li>
+                <li><a href="#ortodoncia-general" class="text-light-text hover:text-primary-blue font-medium">Ortodoncia</a></li>
+                <li><a href="#alineacion-invisible" class="text-light-text hover:text-primary-blue font-medium">Alineación Invisible</a></li>
+                <li><a href="#sobre-mi" class="text-light-text hover:text-primary-blue font-medium">Sobre Mí</a></li>
+                <li><a href="#nuestro-equipo" class="text-light-text hover:text-primary-blue font-medium">Nuestro Equipo</a></li>
+                <li><a href="#consultorios" class="text-light-text hover:text-primary-blue font-medium">Consultorios</a></li>
+                <li><a href="#cuidado-dental" class="text-light-text hover:text-primary-blue font-medium">Consejos</a></li>
+                <li><a href="#contacto" class="text-light-text hover:text-primary-blue font-medium">Contacto</a></li>
             </ul>
+        </nav>
+    </header>
+    <div id="mobile-menu" class="md:hidden">
+        <button id="close-mobile-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2 class="font-dancing text-4xl text-dark-text mb-8">
+            Dra. Cynthia Anderson
+        </h2>
+        <ul class="flex flex-col space-y-4 text-center">
+            <li><a href="#servicios" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Servicios</a></li>
+            <li><a href="#ortodoncia-general" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Ortodoncia</a></li>
+            <li><a href="#alineacion-invisible" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Alineación Invisible</a></li>
+            <li><a href="#sobre-mi" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Sobre Mí</a></li>
+            <li><a href="#nuestro-equipo" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Nuestro Equipo</a></li>
+            <li><a href="#consultorios" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Consultorios</a></li>
+            <li><a href="#cuidado-dental" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Consejos</a></li>
+            <li><a href="#contacto" class="block text-dark-text hover:text-primary-blue font-medium text-xl py-2" onclick="toggleMobileMenu()">Contacto</a></li>
+        </ul>
+    </div>
+
+    <section class="hero-split flex items-center justify-center py-20 px-4 text-center md:text-left">
+        <div class="container mx-auto z-10 animate-on-scroll">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-hero-text-color leading-tight mb-6" style="text-shadow: 1px 1px 8px rgba(0,0,0,0.4)">
+                Sonrisas Saludables para toda la Familia.
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl text-hero-text-color mb-10" style="text-shadow: 1px 1px 8px rgba(0,0,0,0.3)">
+                Atención dental y de ortodoncia experta en un ambiente acogedor y profesional en Paraguay.
+            </p>
+            <div class="stats-container animate-on-scroll">
+                <div class="stat-item"><div class="stat-number" data-target="20">0</div><div class="stat-label">Años de Experiencia</div></div>
+                <div class="stat-item"><div class="stat-number" data-target="800">0</div><div class="stat-label">Sonrisas Transformadas</div></div>
+                <div class="stat-item"><div class="stat-number" data-target="100">0</div><div class="stat-label">% de cuidado para Ti</div></div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                <a href="https://wa.me/595981104314?text=Hola%20Dra.%20Anderson,%20me%20interesa%20agendar%20una%20consulta" class="whatsapp-button" target="_blank"><i class="fab fa-whatsapp mr-2"></i> Consulta por WhatsApp</a>
+                <a href="#contacto" class="mail-button"><i class="fas fa-envelope mr-2"></i> Reserve su cita por mail</a>
+            </div>
         </div>
+    </section>
 
-        <section class="hero-split flex items-center justify-center py-20 px-4 text-center md:text-left">
-            <div class="container mx-auto z-10 animate-on-scroll">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-hero-text-color leading-tight mb-6" style="text-shadow: 1px 1px 8px rgba(0,0,0,0.4)">
-                    Sonrisas Saludables para toda la Familia.
-                </h1>
-                <p class="text-lg sm:text-xl md:text-2xl text-hero-text-color mb-10" style="text-shadow: 1px 1px 8px rgba(0,0,0,0.3)">
-                    Atención dental y de ortodoncia experta en un ambiente acogedor y profesional en Paraguay.
-                </p>
-                <div class="stats-container animate-on-scroll">
-                    <div class="stat-item"><div class="stat-number" data-target="20">0</div><div class="stat-label">Años de Experiencia</div></div>
-                    <div class="stat-item"><div class="stat-number" data-target="800">0</div><div class="stat-label">Sonrisas Transformadas</div></div>
-                    <div class="stat-item"><div class="stat-number" data-target="100">0</div><div class="stat-label">% de cuidado para Ti</div></div>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-                    <a href="https://wa.me/595981104314?text=Hola%20Dra.%20Anderson,%20me%20interesa%20agendar%20una%20consulta" class="whatsapp-button" target="_blank"><i class="fab fa-whatsapp mr-2"></i> Consulta por WhatsApp</a>
-                    <a href="#contacto" class="mail-button"><i class="fas fa-envelope mr-2"></i> Reserve su cita por mail</a>
-                </div>
+    <!-- Light Section -->
+    <section id="servicios" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
+        <div class="container mx-auto">
+            <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-tooth"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Odontología General</h3><p class="text-light-text">Ofrecemos servicios de revisiones, limpiezas rutinarias, obturaciones y extracciones. Atención dental integral para toda la familia.</p></div>
+                <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-teeth"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Ortodoncia</h3><p class="text-light-text">Logre una sonrisa perfectamente alineada con nuestras modernas soluciones de ortodoncia, incluyendo brackets y alineadores transparentes.</p></div>
+                <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-heart"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Estética Dental</h3><p class="text-light-text">Transforme su sonrisa con carillas, blanqueamientos dentales y otros procedimientos estéticos diseñados para realzar su belleza natural.</p></div>
+                <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-child-reaching"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Odontología Pediátrica</h3><p class="text-light-text">Cuidado dental amable y delicado para niños, centrado en la prevención y la creación de experiencias dentales positivas.</p></div>
+                <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-bell"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Urgencias Dentales</h3><p class="text-light-text">Atención rápida y compasiva para emergencias dentales, asegurando que reciba alivio cuando más lo necesite.</p></div>
+                <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fa-solid fa-teeth-open"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Cirugía Oral</h3><p class="text-light-text">Desde la extracción de muelas del juicio hasta implantes dentales, nuestro equipo experto ofrece procedimientos de cirugía oral seguros y efectivos.</p></div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Light Section -->
-        <section id="servicios" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
-            <div class="container mx-auto">
-                <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-tooth"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Odontología General</h3><p class="text-light-text">Ofrecemos servicios de revisiones, limpiezas rutinarias, obturaciones y extracciones. Atención dental integral para toda la familia.</p></div>
-                    <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-teeth"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Ortodoncia</h3><p class="text-light-text">Logre una sonrisa perfectamente alineada con nuestras modernas soluciones de ortodoncia, incluyendo brackets y alineadores transparentes.</p></div>
-                    <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-heart"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Estética Dental</h3><p class="text-light-text">Transforme su sonrisa con carillas, blanqueamientos dentales y otros procedimientos estéticos diseñados para realzar su belleza natural.</p></div>
-                    <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-child-reaching"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Odontología Pediátrica</h3><p class="text-light-text">Cuidado dental amable y delicado para niños, centrado en la prevención y la creación de experiencias dentales positivas.</p></div>
-                    <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fas fa-bell"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Urgencias Dentales</h3><p class="text-light-text">Atención rápida y compasiva para emergencias dentales, asegurando que reciba alivio cuando más lo necesite.</p></div>
-                    <div class="card p-8 text-center flex flex-col items-center animate-on-scroll"><div class="text-5xl text-dark-text mb-4"><i class="fa-solid fa-teeth-open"></i></div><h3 class="text-2xl font-bold mb-3 text-dark-text">Cirugía Oral</h3><p class="text-light-text">Desde la extracción de muelas del juicio hasta implantes dentales, nuestro equipo experto ofrece procedimientos de cirugía oral seguros y efectivos.</p></div>
-                </div>
+    <!-- Dark Section -->
+    <section id="ortodoncia-general" class="py-20 px-4 section-dark">
+        <div class="container mx-auto"><p class="text-xl text-center mb-10 max-w-3xl mx-auto animate-on-scroll">Más allá de la estética, la ortodoncia es una inversión en tu salud y bienestar. Descubre cómo podemos transformar tu sonrisa con un enfoque personalizado.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12"><div class="animate-on-scroll"><h3 class="text-3xl font-bold mb-4">Brackets Tradicionales: Durabilidad y Resultados</h3><p class="text-lg mb-4">Los brackets metálicos son una solución clásica y altamente efectiva para corregir una amplia gama de problemas de alineación dental. Su durabilidad y resistencia los hacen ideales para casos complejos, ofreciendo resultados predecibles y una sonrisa perfectamente recta.</p><p class="text-lg">También ofrecemos opciones de brackets estéticos (cerámicos o de zafiro) que son menos visibles, combinando la eficacia de la ortodoncia tradicional con una estética mejorada para aquellos que buscan discreción durante el tratamiento.</p></div><div class="animate-on-scroll"><img src="https://lh3.googleusercontent.com/pw/AP1GczNZmuk3MkVtN2WyFd0zomhnV_b1sLPkGGP-R-rRoElV-cD4J7nls7okh1Uf_k3E50jVQldM9QleA4xB-BcklZR4razMTjISIf6TvBzyr-4bsEBvhmo=w2400" alt="Brackets Dentales" class="w-full rounded-xl shadow-medium"></div></div></div>
+    </section>
+
+    <!-- Light Section -->
+    <section id="alineacion-invisible" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
+        <div class="container mx-auto">
+            <p class="text-xl text-light-text text-center mb-10 max-w-3xl mx-auto animate-on-scroll">Transforma tu sonrisa de manera cómoda y prácticamente imperceptible con nuestros avanzados alineadores transparentes.</p>
+            <div class="max-w-4xl mx-auto text-center md:text-left animate-on-scroll">
+                <h3 class="text-3xl font-bold text-dark-text mb-4">¿Qué es la Alineación Invisible y Cómo Funciona?</h3>
+                <p class="text-lg text-light-text mb-4">La alineación invisible es una revolucionaria alternativa a los brackets tradicionales. Consiste en una serie de alineadores transparentes y removibles, hechos a medida, que mueven tus dientes gradualmente hacia la posición deseada. Cada juego de alineadores se usa por aproximadamente 1-2 semanas y se reemplaza por el siguiente en la secuencia.</p><p class="text-lg text-light-text">Utilizamos tecnología 3D de vanguardia para planificar cada etapa de tu tratamiento, permitiéndote ver cómo quedará tu sonrisa antes de comenzar. Este método es ideal para quienes buscan discreción, comodidad y flexibilidad durante su proceso de ortodoncia.</p>
             </div>
-        </section>
+            <div class="text-center mt-12 mb-12 animate-on-scroll"><h3 class="text-3xl font-bold text-dark-text mb-6">Conozca más sobre la Alineación Invisible en este video:</h3><div class="w-full max-w-3xl mx-auto rounded-xl overflow-hidden shadow-medium"><div class="relative" style="padding-bottom: 56.25%; height: 0;"><iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Xd5wKqQkT-A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Alineación Invisible - Video Educativo"></iframe></div></div><p class="text-lg text-light-text italic max-w-3xl mx-auto mt-6">Descubre visualmente el proceso y los beneficios de los alineadores transparentes para lograr la sonrisa que siempre has deseado.</p></div>
+            <div class="text-center animate-on-scroll"><a href="#contacto" class="btn-primary">¡Consulta por tu Alineación Invisible Hoy!</a></div>
+        </div>
+    </section>
 
-        <!-- Dark Section -->
-        <section id="ortodoncia-general" class="py-20 px-4 section-dark">
-            <div class="container mx-auto"><p class="text-xl text-center mb-10 max-w-3xl mx-auto animate-on-scroll">Más allá de la estética, la ortodoncia es una inversión en tu salud y bienestar. Descubre cómo podemos transformar tu sonrisa con un enfoque personalizado.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12"><div class="animate-on-scroll"><h3 class="text-3xl font-bold mb-4">Brackets Tradicionales: Durabilidad y Resultados</h3><p class="text-lg mb-4">Los brackets metálicos son una solución clásica y altamente efectiva para corregir una amplia gama de problemas de alineación dental. Su durabilidad y resistencia los hacen ideales para casos complejos, ofreciendo resultados predecibles y una sonrisa perfectamente recta.</p><p class="text-lg">También ofrecemos opciones de brackets estéticos (cerámicos o de zafiro) que son menos visibles, combinando la eficacia de la ortodoncia tradicional con una estética mejorada para aquellos que buscan discreción durante el tratamiento.</p></div><div class="animate-on-scroll"><img src="https://lh3.googleusercontent.com/pw/AP1GczNZmuk3MkVtN2WyFd0zomhnV_b1sLPkGGP-R-rRoElV-cD4J7nls7okh1Uf_k3E50jVQldM9QleA4xB-BcklZR4razMTjISIf6TvBzyr-4bsEBvhmo=w2400" alt="Brackets Dentales" class="w-full rounded-xl shadow-medium"></div></div></div>
-        </section>
+    <section class="parallax-divider"></section>
 
-        <!-- Light Section -->
-        <section id="alineacion-invisible" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
-            <div class="container mx-auto">
-                <p class="text-xl text-light-text text-center mb-10 max-w-3xl mx-auto animate-on-scroll">Transforma tu sonrisa de manera cómoda y prácticamente imperceptible con nuestros avanzados alineadores transparentes.</p>
-                <div class="max-w-4xl mx-auto text-center md:text-left animate-on-scroll">
-                    <h3 class="text-3xl font-bold text-dark-text mb-4">¿Qué es la Alineación Invisible y Cómo Funciona?</h3>
-                    <p class="text-lg text-light-text mb-4">La alineación invisible es una revolucionaria alternativa a los brackets tradicionales. Consiste en una serie de alineadores transparentes y removibles, hechos a medida, que mueven tus dientes gradualmente hacia la posición deseada. Cada juego de alineadores se usa por aproximadamente 1-2 semanas y se reemplaza por el siguiente en la secuencia.</p><p class="text-lg text-light-text">Utilizamos tecnología 3D de vanguardia para planificar cada etapa de tu tratamiento, permitiéndote ver cómo quedará tu sonrisa antes de comenzar. Este método es ideal para quienes buscan discreción, comodidad y flexibilidad durante su proceso de ortodoncia.</p>
-                </div>
-                <div class="text-center mt-12 mb-12 animate-on-scroll"><h3 class="text-3xl font-bold text-dark-text mb-6">Conozca más sobre la Alineación Invisible en este video:</h3><div class="w-full max-w-3xl mx-auto rounded-xl overflow-hidden shadow-medium"><div class="relative" style="padding-bottom: 56.25%; height: 0;"><iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Xd5wKqQkT-A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Alineación Invisible - Video Educativo"></iframe></div></div><p class="text-lg text-light-text italic max-w-3xl mx-auto mt-6">Descubre visualmente el proceso y los beneficios de los alineadores transparentes para lograr la sonrisa que siempre has deseado.</p></div>
-                <div class="text-center animate-on-scroll"><a href="#contacto" class="btn-primary">¡Consulta por tu Alineación Invisible Hoy!</a></div>
+    <!-- Dark Section -->
+    <section id="sobre-mi" class="py-20 px-4 section-dark">
+        <div class="container mx-auto text-center md:text-left grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="flex justify-center animate-on-scroll md:order-1">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNV8wsg0uBzQTpAKyauOQS1ZUl6hXKntykv5YTZM51YG2h8CmdHaE9kw8DfDE2yh-J6L9aZntE4iQXzP6g6CAEBdirQvGHd5B4XZnefYNw-yP8o4qA=w2400" alt="Dra. Cynthia Anderson" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-medium">
             </div>
-        </section>
+            <div class="animate-on-scroll md:order-2">
+                <h2 class="section-title text-center md:text-left !text-white">Sobre Mí</h2>
+                <p class="text-lg mb-4">La Dra. Cynthia Anderson es una odontóloga recibida en la UNA especializada en ortodoncia altamente experimentada con más de 30 años de experiencia. Dedicada a brindar atención personalizada y profesional. Con pasión por crear sonrisas saludables y hermosas, combina técnicas avanzadas con un enfoque delicado para asegurar que cada paciente se sienta cómodo y seguro.</p>
+                <p class="text-lg">Su compromiso con la educación continua significa que se mantiene a la vanguardia de las innovaciones dentales y de ortodoncia, ofreciendo los mejores y más efectivos tratamientos a sus pacientes.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- PARALLAX DIVIDER MOVED HERE -->
-        <section class="parallax-divider"></section>
-
-        <!-- Dark Section -->
-        <section id="sobre-mi" class="py-20 px-4 section-dark">
-            <div class="container mx-auto text-center md:text-left grid grid-cols-1 md:grid-cols-2 gap-12 items-center"><div class="md:order-2 animate-on-scroll"><h2 class="section-title text-left !text-white">Sobre Mí</h2><p class="text-lg mb-4">La Dra. Cynthia Anderson es una odontóloga recibida en la UNA especializada en ortodoncia altamente experimentada con más de 30 años de experiencia. Dedicada a brindar atención personalizada y profesional. Con pasión por crear sonrisas saludables y hermosas, combina técnicas avanzadas con un enfoque delicado para asegurar que cada paciente se sienta cómodo y seguro.</p><p class="text-lg">Su compromiso con la educación continua significa que se mantiene a la vanguardia de las innovaciones dentales y de ortodoncia, ofreciendo los mejores y más efectivos tratamientos a sus pacientes.</p></div><div class="md:order-1 flex justify-center animate-on-scroll"><img src="https://lh3.googleusercontent.com/pw/AP1GczNV8wsg0uBzQTpAKyauOQS1ZUl6hXKntykv5YTZM51YG2h8CmdHaE9kw8DfDE2yh-J6L9aZntE4iQXzP6g6CAEBdirQvGHd5B4XZnefYNw-yP8o4qA=w2400" alt="Dra. Cynthia Anderson" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-medium"></div></div>
-        </section>
-
-        <!-- Light Section -->
-        <section id="nuestro-equipo" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
-            <div class="container mx-auto">
-                <h2 class="section-title animate-on-scroll">Nuestro Equipo</h2>
-                <p class="text-center text-xl text-light-text mb-12 max-w-3xl mx-auto animate-on-scroll">En nuestra clínica en Capiatá, contamos con un equipo de profesionales altamente cualificados que complementan la excelencia de los servicios ofrecidos por la Dra. Cynthia Anderson.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- FIX: Removed rounded-full from the image class -->
-                    <div class="card text-center animate-on-scroll">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOfhPlJEZgqOYE_okLvkzurjzd4UBT29g5Evnt3l5NhtWO4GSEHEpFcZeLW4CWeN_53I7J5ZUb2nxi9YO3v9D8lXClFc2XIC4GR9YYTVdQlOanP_Ls=w2400" alt="Dra. Nathalia Paniagua" class="h-40 w-auto mb-6 mx-auto shadow-soft rounded-lg">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-primary-blue mb-2">Dra. Nathalia Paniagua</h3>
-                            <p class="text-xl font-semibold text-dark-text mb-4">Endodoncia y Rehabilitación Oral</p>
-                            <p class="text-light-text mb-4">Especialista en restaurar la salud y estética de sus dientes, con un enfoque en tratamientos de conducto y reconstrucciones complejas para devolverle la funcionalidad a su sonrisa.</p>
-                            <a href="#contacto" class="btn-primary text-sm mt-4">Consulta el Horario / Agendar</a>
-                        </div>
+    <!-- Light Section -->
+    <section id="nuestro-equipo" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
+        <div class="container mx-auto">
+            <h2 class="section-title animate-on-scroll">Nuestro Equipo</h2>
+            <p class="text-center text-xl text-light-text mb-12 max-w-3xl mx-auto animate-on-scroll">En nuestra clínica en Capiatá, contamos con un equipo de profesionales altamente cualificados que complementan la excelencia de los servicios ofrecidos por la Dra. Cynthia Anderson.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="card text-center animate-on-scroll">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOfhPlJEZgqOYE_okLvkzurjzd4UBT29g5Evnt3l5NhtWO4GSEHEpFcZeLW4CWeN_53I7J5ZUb2nxi9YO3v9D8lXClFc2XIC4GR9YYTVdQlOanP_Ls=w2400" alt="Dra. Nathalia Paniagua" class="h-40 w-auto mb-6 mx-auto shadow-soft rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-primary-blue mb-2">Dra. Nathalia Paniagua</h3>
+                        <p class="text-xl font-semibold text-dark-text mb-4">Endodoncia y Rehabilitación Oral</p>
+                        <p class="text-light-text mb-4">Especialista en restaurar la salud y estética de sus dientes, con un enfoque en tratamientos de conducto y reconstrucciones complejas para devolverle la funcionalidad a su sonrisa.</p>
+                        <a href="#contacto" class="btn-primary text-sm mt-4">Consulta el Horario / Agendar</a>
                     </div>
-                    <!-- FIX: Removed rounded-full from the image class -->
-                    <div class="card text-center animate-on-scroll">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOqhTJXaRxEq_RErC43TCRaP8Mz8DdTG_7QBISsqhlqCtQR9Faj6zK9BRG2piyeHNrpuRvQP2OAzoDLgKjFmKX5-T0olM6DnlJ2eVU5SIPIdocboLI=w2400" alt="Dr. Rubén Cáceres" class="h-40 w-auto mb-6 mx-auto shadow-soft rounded-lg">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-primary-blue mb-2">Dr. Rubén Cáceres</h3>
-                            <p class="text-xl font-semibold text-dark-text mb-4">Cirugía e Implantes Dentales</p>
-                            <p class="text-light-text mb-4">Experto en procedimientos quirúrgicos dentales e implantes, brindando soluciones avanzadas para reemplazar piezas dentales perdidas y mejorar la salud bucal general.</p>
-                            <a href="#contacto" class="btn-primary text-sm mt-4">Consulta el Horario / Agendar</a>
-                        </div>
+                </div>
+                <div class="card text-center animate-on-scroll">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOqhTJXaRxEq_RErC43TCRaP8Mz8DdTG_7QBISsqhlqCtQR9Faj6zK9BRG2piyeHNrpuRvQP2OAzoDLgKjFmKX5-T0olM6DnlJ2eVU5SIPIdocboLI=w2400" alt="Dr. Rubén Cáceres" class="h-40 w-auto mb-6 mx-auto shadow-soft rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-primary-blue mb-2">Dr. Rubén Cáceres</h3>
+                        <p class="text-xl font-semibold text-dark-text mb-4">Cirugía e Implantes Dentales</p>
+                        <p class="text-light-text mb-4">Experto en procedimientos quirúrgicos dentales e implantes, brindando soluciones avanzadas para reemplazar piezas dentales perdidas y mejorar la salud bucal general.</p>
+                        <a href="#contacto" class="btn-primary text-sm mt-4">Consulta el Horario / Agendar</a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Dark Section -->
-        <section id="consultorios" class="py-20 px-4 section-dark">
-            <div class="container mx-auto"><h2 class="section-title animate-on-scroll">Nuestros Cómodos Consultorios</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div class="card p-8 flex flex-col animate-on-scroll"><h3 class="mb-4">CA Odontología Integral - Capiatá</h3><p class="mb-4"><span class="font-bold text-beige-bg">Dirección:</span> Emilio Gabriaguez 324 esquina Estudiantes Capiateños, Capiatá, Paraguay</p><p class="mb-4"><span class="font-bold text-beige-bg">Teléfono:</span> 0981104314</p><p class="mb-6"><span class="font-bold text-beige-bg">Horario:</span> Lun-Vie: 9:00 AM - 6:00 PM, Sáb: 9:00 AM - 1:00 PM</p><div class="w-full h-64 bg-gray-600 rounded-lg overflow-hidden shadow-inner mb-4"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.557157239561!2d-57.44234411969047!3d-25.35263707208665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945db39c7ead3c87%3A0xee30799e49c9ca63!2sC.A%20Odontolog%C3%ADa%20Integral!5e0!3m2!1ses!2spy!4v1749323475596!5m2!1ses!2spy" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de CA Odontología Integral - Capiatá"></iframe></div><a href="#contacto" class="btn-primary self-start">Agendar en Capiatá</a></div><div class="card p-8 flex flex-col animate-on-scroll"><h3 class="mb-4">Consultorio Dra. Cynthia Anderson - Asunción</h3><p class="mb-4"><span class="font-bold text-beige-bg">Dirección:</span> Lillo 1745 entre Brizuela y Cap Motta, Asunción, Paraguay</p><p class="mb-4"><span class="font-bold text-beige-bg">Teléfono:</span> 0981104314</p><p class="mb-6"><span class="font-bold text-beige-bg">Horario:</span> Mar-Sáb: 10:00 AM - 7:00 PM</p><div class="w-full h-64 bg-gray-600 rounded-lg overflow-hidden shadow-inner mb-4"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7214.637002938251!2d-57.580013317409126!3d-25.293501017542024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da979a9642595%3A0xbea722df71d2ceb3!2sDr%20Cynthia%20Anderson%20-%20Odontolog%C3%ADa%20general%20y%20Ortodocia!5e0!3m2!1ses!2spy!4v1749323316621!5m2!1ses!2spy" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Consultorio Dra. Cynthia Anderson - Asunción"></iframe></div><a href="#contacto" class="btn-primary self-start">Agendar en Asunción</a></div></div></div>
-        </section>
+    <!-- Dark Section -->
+    <section id="consultorios" class="py-20 px-4 section-dark">
+        <div class="container mx-auto"><h2 class="section-title animate-on-scroll">Nuestros Cómodos Consultorios</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div class="card p-8 flex flex-col animate-on-scroll"><h3 class="mb-4">CA Odontología Integral - Capiatá</h3><p class="mb-4"><span class="font-bold text-beige-bg">Dirección:</span> Emilio Gabriaguez 324 esquina Estudiantes Capiateños, Capiatá, Paraguay</p><p class="mb-4"><span class="font-bold text-beige-bg">Teléfono:</span> 0981104314</p><p class="mb-6"><span class="font-bold text-beige-bg">Horario:</span> Lun-Vie: 9:00 AM - 6:00 PM, Sáb: 9:00 AM - 1:00 PM</p><div class="w-full h-64 bg-gray-600 rounded-lg overflow-hidden shadow-inner mb-4"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.557157239561!2d-57.44234411969047!3d-25.35263707208665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945db39c7ead3c87%3A0xee30799e49c9ca63!2sC.A%20Odontolog%C3%ADa%20Integral!5e0!3m2!1ses!2spy!4v1749323475596!5m2!1ses!2spy" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de CA Odontología Integral - Capiatá"></iframe></div><a href="#contacto" class="btn-primary self-start">Agendar en Capiatá</a></div><div class="card p-8 flex flex-col animate-on-scroll"><h3 class="mb-4">Consultorio Dra. Cynthia Anderson - Asunción</h3><p class="mb-4"><span class="font-bold text-beige-bg">Dirección:</span> Lillo 1745 entre Brizuela y Cap Motta, Asunción, Paraguay</p><p class="mb-4"><span class="font-bold text-beige-bg">Teléfono:</span> 0981104314</p><p class="mb-6"><span class="font-bold text-beige-bg">Horario:</span> Mar-Sáb: 10:00 AM - 7:00 PM</p><div class="w-full h-64 bg-gray-600 rounded-lg overflow-hidden shadow-inner mb-4"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7214.637002938251!2d-57.580013317409126!3d-25.293501017542024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da979a9642595%3A0xbea722df71d2ceb3!2sDr%20Cynthia%20Anderson%20-%20Odontolog%C3%ADa%20general%20y%20Ortodocia!5e0!3m2!1ses!2spy!4v1749323316621!5m2!1ses!2spy" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Consultorio Dra. Cynthia Anderson - Asunción"></iframe></div><a href="#contacto" class="btn-primary self-start">Agendar en Asunción</a></div></div></div>
+    </section>
 
-        <!-- Light Section -->
-        <section id="cuidado-dental" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
-            <div class="container mx-auto"><h2 class="section-title animate-on-scroll">Consejos para una Sonrisa Saludable</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-brush text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Cepillado Correcto</h3><p class="text-light-text">Cepille sus dientes al menos dos veces al día durante dos minutos, usando una pasta dental con flúor. No olvide limpiar su lengua.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-tooth text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Uso de Hilo Dental</h3><p class="text-light-text">El hilo dental es esencial para remover la placa y los restos de comida entre los dientes y debajo de la línea de las encías.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-calendar-check text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Visitas Regulares</h3><p class="text-light-text">Agende revisiones y limpiezas dentales cada seis meses. La detección temprana previene problemas mayores.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-apple-whole text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Dieta Saludable</h3><p class="text-light-text">Reduzca el consumo de azúcares y alimentos ácidos. Una dieta balanceada es clave para la salud dental y general.</p></div></div></div><div class="text-center animate-on-scroll"><h3 class="text-2xl font-bold mb-4 text-dark-text">Síganos en Redes Sociales</h3><div class="flex justify-center space-x-6"><a href="https://www.instagram.com/ca_odontologia_integral/" target="_blank" class="text-primary-blue hover:text-dark-text transition-colors duration-200"><i class="fab fa-instagram text-4xl"></i></a><a href="https://www.facebook.com/Caodonto1" target="_blank" class="text-primary-blue hover:text-dark-text transition-colors duration-200"><i class="fab fa-facebook text-4xl"></i></a></div></div></div>
-        </section>
+    <!-- Light Section -->
+    <section id="cuidado-dental" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
+        <div class="container mx-auto"><h2 class="section-title animate-on-scroll">Consejos para una Sonrisa Saludable</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-brush text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Cepillado Correcto</h3><p class="text-light-text">Cepille sus dientes al menos dos veces al día durante dos minutos, usando una pasta dental con flúor. No olvide limpiar su lengua.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-tooth text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Uso de Hilo Dental</h3><p class="text-light-text">El hilo dental es esencial para remover la placa y los restos de comida entre los dientes y debajo de la línea de las encías.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-calendar-check text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Visitas Regulares</h3><p class="text-light-text">Agende revisiones y limpiezas dentales cada seis meses. La detección temprana previene problemas mayores.</p></div></div><div class="card p-6 flex items-start animate-on-scroll"><i class="fa-solid fa-apple-whole text-dark-text text-3xl mr-4 mt-1"></i><div><h3 class="text-xl font-bold mb-2">Dieta Saludable</h3><p class="text-light-text">Reduzca el consumo de azúcares y alimentos ácidos. Una dieta balanceada es clave para la salud dental y general.</p></div></div></div><div class="text-center animate-on-scroll"><h3 class="text-2xl font-bold mb-4 text-dark-text">Síganos en Redes Sociales</h3><div class="flex justify-center space-x-6"><a href="https://www.instagram.com/ca_odontologia_integral/" target="_blank" class="text-primary-blue hover:text-dark-text transition-colors duration-200"><i class="fab fa-instagram text-4xl"></i></a><a href="https://www.facebook.com/Caodonto1" target="_blank" class="text-primary-blue hover:text-dark-text transition-colors duration-200"><i class="fab fa-facebook text-4xl"></i></a></div></div></div>
+    </section>
 
-        <!-- Dark Section -->
-        <section id="testimonios" class="py-20 px-4 section-dark">
-            <div class="container mx-auto">
-                <h2 class="section-title animate-on-scroll">Lo que Dicen Nuestros Pacientes</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="card p-8 animate-on-scroll">
-                        <i class="fas fa-quote-left text-primary-blue text-4xl mb-4"></i>
-                        <p class="text-lg italic mb-4">"La Dra. Cynthia Anderson es increíblemente hábil e hizo que mi viaje de ortodoncia fuera muy cómodo. ¡Mi nueva sonrisa es asombrosa!"</p>
-                        <p class="font-semibold text-beige-bg">- Sara G.</p>
-                    </div>
-                    <div class="card p-8 animate-on-scroll">
-                        <i class="fas fa-quote-left text-primary-blue text-4xl mb-4"></i>
-                        <p class="text-lg italic mb-4">"El Consultorio Central siempre es acogedor, y el personal es muy amable. ¡Altamente recomendado para el cuidado dental familiar!"</p>
-                        <p class="font-semibold text-beige-bg">- La Familia Benítez</p>
-                    </div>
+    <!-- Dark Section -->
+    <section id="testimonios" class="py-20 px-4 section-dark">
+        <div class="container mx-auto">
+            <h2 class="section-title animate-on-scroll">Lo que Dicen Nuestros Pacientes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="card p-8 animate-on-scroll">
+                    <i class="fas fa-quote-left text-primary-blue text-4xl mb-4"></i>
+                    <p class="text-lg italic mb-4">"La Dra. Cynthia Anderson es increíblemente hábil e hizo que mi viaje de ortodoncia fuera muy cómodo. ¡Mi nueva sonrisa es asombrosa!"</p>
+                    <p class="font-semibold text-beige-bg">- Sara G.</p>
+                </div>
+                <div class="card p-8 animate-on-scroll">
+                    <i class="fas fa-quote-left text-primary-blue text-4xl mb-4"></i>
+                    <p class="text-lg italic mb-4">"El Consultorio Central siempre es acogedor, y el personal es muy amable. ¡Altamente recomendado para el cuidado dental familiar!"</p>
+                    <p class="font-semibold text-beige-bg">- La Familia Benítez</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Light Section -->
-        <section id="contacto" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
-            <div class="container mx-auto text-center"><h2 class="section-title animate-on-scroll">Póngase en Contacto</h2><p class="text-xl text-light-text mb-8 max-w-3xl mx-auto animate-on-scroll">¿Listo para una sonrisa más saludable y brillante? Complete el formulario o contáctenos directamente.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-8"><div class="card p-8 text-left animate-on-scroll"><h3 class="text-2xl font-bold text-dark-text mb-6">Envíanos un Mensaje</h3><form action="https://formspree.io/f/meokewko" method="POST" class="space-y-6"><div><label for="name" class="block text-lg font-medium text-dark-text mb-2">Nombre Completo</label><input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="email" class="block text-lg font-medium text-dark-text mb-2">Correo Electrónico</label><input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="subject" class="block text-lg font-medium text-dark-text mb-2">Asunto</label><input type="text" id="subject" name="subject" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="message" class="block text-lg font-medium text-dark-text mb-2">Su Mensaje</label><textarea id="message" name="message" rows="5" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></textarea></div><button type="submit" class="btn-primary w-full">Enviar Mensaje</button></form><p id="form-status" class="mt-4 text-center text-sm font-medium"></p></div><div class="card p-8 flex flex-col justify-between animate-on-scroll"><div><h3 class="text-2xl font-bold text-dark-text mb-6">Información de Contacto Directo</h3><p class="text-lg text-light-text mb-4"><i class="fas fa-phone-alt text-primary-blue mr-3"></i><span class="font-semibold text-dark-text">Asuncion y Capiatá:</span> <a href="tel:+595981104314" class="hover:underline">0981104314</a></p></div><div class="mt-auto"><h3 class="text-2xl font-bold text-dark-text mb-4">Horarios de Atención</h3><p class="text-lg text-light-text mb-2"><span class="font-semibold text-dark-text">Capiatá:</span> Mar-Jue: 2:00 PM - 7:00 PM, Sáb: 8:30 AM - 1:00 PM</p><p class="text-lg text-light-text"><span class="font-semibold text-dark-text">Asunción:</span> Lun-Mie-Vie: 9:00 AM - 6:00 PM</p></div></div></div></div>
-        </section>
+    <!-- Light Section -->
+    <section id="contacto" class="py-20 px-4 bg-white/80 backdrop-blur-sm">
+        <div class="container mx-auto text-center"><h2 class="section-title animate-on-scroll">Póngase en Contacto</h2><p class="text-xl text-light-text mb-8 max-w-3xl mx-auto animate-on-scroll">¿Listo para una sonrisa más saludable y brillante? Complete el formulario o contáctenos directamente.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-8"><div class="card p-8 text-left animate-on-scroll"><h3 class="text-2xl font-bold text-dark-text mb-6">Envíanos un Mensaje</h3><form action="https://formspree.io/f/meokewko" method="POST" class="space-y-6"><div><label for="name" class="block text-lg font-medium text-dark-text mb-2">Nombre Completo</label><input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="email" class="block text-lg font-medium text-dark-text mb-2">Correo Electrónico</label><input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="subject" class="block text-lg font-medium text-dark-text mb-2">Asunto</label><input type="text" id="subject" name="subject" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></div><div><label for="message" class="block text-lg font-medium text-dark-text mb-2">Su Mensaje</label><textarea id="message" name="message" rows="5" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all duration-200"></textarea></div><button type="submit" class="btn-primary w-full">Enviar Mensaje</button></form><p id="form-status" class="mt-4 text-center text-sm font-medium"></p></div><div class="card p-8 flex flex-col justify-between animate-on-scroll"><div><h3 class="text-2xl font-bold text-dark-text mb-6">Información de Contacto Directo</h3><p class="text-lg text-light-text mb-4"><i class="fas fa-phone-alt text-primary-blue mr-3"></i><span class="font-semibold text-dark-text">Asuncion y Capiatá:</span> <a href="tel:+595981104314" class="hover:underline">0981104314</a></p></div><div class="mt-auto"><h3 class="text-2xl font-bold text-dark-text mb-4">Horarios de Atención</h3><p class="text-lg text-light-text mb-2"><span class="font-semibold text-dark-text">Capiatá:</span> Mar-Jue: 2:00 PM - 7:00 PM, Sáb: 8:30 AM - 1:00 PM</p><p class="text-lg text-light-text"><span class="font-semibold text-dark-text">Asunción:</span> Lun-Mie-Vie: 9:00 AM - 6:00 PM</p></div></div></div></div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="bg-dark-text text-white py-8 px-4 text-center">
-            <div class="container mx-auto">
-                <p>&copy; 2025 Dra. Cynthia Anderson Consultorios Dentales y de Ortodoncia. Todos los derechos reservados.</p>
-                <p class="text-sm mt-2 opacity-80">Website by sebovelan</p>
-            </div>
-        </footer>
+    <!-- Footer -->
+    <footer class="bg-dark-text text-white py-8 px-4 text-center">
+        <div class="container mx-auto">
+            <p>&copy; 2025 Dra. Cynthia Anderson Consultorios Dentales y de Ortodoncia. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2 opacity-80">Website by sebovelan</p>
+        </div>
+    </footer>
     </div>
     <script>
-        // JavaScript for the cursor glow effect
-        window.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            document.documentElement.style.setProperty('--cursor-x', `${clientX}px`);
-            document.documentElement.style.setProperty('--cursor-y', `${clientY}px`);
-        });
-
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('is-open');
@@ -564,6 +549,12 @@
         document.getElementById('close-mobile-menu').addEventListener('click', toggleMobileMenu);
 
         window.addEventListener('DOMContentLoaded', (event) => {
+            // FIX: Force page to scroll to top on refresh
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+
             const logoSection = document.querySelector('.logo-section');
             logoSection.addEventListener('animationend', () => {
                 logoSection.style.display = 'none';
